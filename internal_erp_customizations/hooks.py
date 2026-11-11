@@ -7,8 +7,9 @@ app_license = "mit"
 
 required_apps = ["frappe/erpnext", "frappe/hrms"]
 
-doc_events = {
-    "Employee Onboarding": {
-        "on_submit": "internal_erp_customizations.overrides.employee_onboarding.set_project_start_date",
-    },
+override_doctype_class = {
+    "Employee Onboarding": "internal_erp_customizations.overrides.employee_onboarding.CustomEmployeeOnboarding",
 }
+
+after_install = "internal_erp_customizations.setup.setup_customizations"
+after_migrate = "internal_erp_customizations.setup.setup_customizations"
